@@ -1,0 +1,8 @@
+/.history
+/build
+/.eide/log
+
+/keil/*
+!/keil/project.uvprojx
+!/keil/project.uvoptx
+!/keil/RTE

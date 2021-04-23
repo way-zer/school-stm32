@@ -1,0 +1,19 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "files.associations": {
+            "*.C": "c",
+            ".eideignore": "ignore",
+            "main.h": "c",
+            "stm32f4xx_ll_rcc.h": "c"
+        },
+        "C_Cpp.default.intelliSenseMode": "gcc-arm",
+        "files.autoGuessEncoding": true,
+        "C_Cpp.default.cppStandard": "c++14",
+        "C_Cpp.default.cStandard": "c99"
+    }
+}
