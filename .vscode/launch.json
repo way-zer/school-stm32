@@ -10,7 +10,8 @@
             "interface": "swd",
             "executable": ".\\build\\Debug\\stm32f4xx_cubemx_demo.elf",
             "runToMain": true,
-            "device": "STM32F103C8"
+            "device": "STM32F407ZG",
+            "svdFile": ".\\pack\\Keil\\STM32F4xx_DFP.1.0.8\\SVD\\STM32F40x.svd"
         },
         {
             "cwd": "${workspaceRoot}",
@@ -34,8 +35,9 @@
             "servertype": "pyocd",
             "executable": ".\\build\\Debug\\stm32f4xx_cubemx_demo.elf",
             "runToMain": true,
-            "targetId": "STM32F407VGTX",
-            "cmsisPack": ".eide/pyocd.STM32F4xx_DFP.2.14.0.zip"
+            "targetId": "cortex_m",
+            "cmsisPack": ".eide/pyocd.STM32F4xx_DFP.2.14.0.zip",
+            "svdFile": ".\\pack\\Keil\\STM32F4xx_DFP.1.0.8\\SVD\\STM32F40x.svd"
         }
     ]
 }

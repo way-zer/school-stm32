@@ -11,7 +11,6 @@
 
 更新时间：2018-09-21
 **************************************************************/
-void assert_param(int expr){}
 #include "stm32f4xx_conf.h"
 #include "delay.h"
 
@@ -37,10 +36,10 @@ int main(void)
 	
     while(1)
     {
+		Delay_Ms(100*(8-cont));
 		led_data = 1<<cont;         
 		GPIO_Write(GPIOF, led_data); 
-		Delay_Ms(100);
 		cont++;
-		cont &= 0x07;    //大于7后清零
+		cont &= 0x07;
     }
 }

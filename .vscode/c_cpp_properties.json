@@ -17,10 +17,15 @@
                 ".\\.eide\\deps\\STM32F4xx_DFP\\StdPeriphDrivers.RCC",
                 ".\\pack\\Keil\\STM32F4xx_DFP.1.0.8\\Device\\StdPeriph_Driver\\inc",
                 ".\\.eide\\deps\\STM32F4xx_DFP\\StdPeriphDrivers.Framework",
-                ".\\application\\P1",
-                ".\\application\\P0",
-                ".\\periph_config\\System",
-                ".\\periph_config\\Drivers\\CMSIS\\Include"
+                ".\\.eide\\deps\\STM32F4xx_DFP\\StdPeriphDrivers.EXTI",
+                ".\\.eide\\deps\\STM32F4xx_DFP\\StdPeriphDrivers.SYSCFG",
+                ".\\.eide\\deps\\STM32F4xx_DFP\\StdPeriphDrivers.TIM",
+                ".\\application\\P3",
+                ".\\application\\P3\\libs",
+                ".\\periph_config",
+                ".\\periph_config\\Drivers\\CMSIS\\Include",
+                ".\\periph_config\\Drivers\\CMSIS\\Device\\ST\\STM32F4xx\\Include",
+                ".\\libs"
             ],
             "defines": [
                 "${default}",

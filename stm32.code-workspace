@@ -16,7 +16,11 @@
             "stm32f4xx.h": "c",
             "stm32f4xx_gpio.h": "c",
             "stm32_assert.h": "c",
-            "stm32f4xx_conf.h": "c"
+            "stm32f4xx_conf.h": "c",
+            "led.h": "c",
+            "delay.h": "c",
+            "exti.h": "c",
+            "smg.h": "c"
         },
         "C_Cpp.default.intelliSenseMode": "gcc-arm",
         "files.autoGuessEncoding": true,
