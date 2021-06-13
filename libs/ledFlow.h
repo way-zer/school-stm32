@@ -7,6 +7,7 @@
 #define LEDFlow_GPIO GPIOC
 #define LEDFlow_SET(dat) GPIO_Write(LEDFlow_GPIO, dat)
 
+extern uint32_t millis;
 int8_t LEDFlow_flag;
 
 void LEDFlow_Init(void);

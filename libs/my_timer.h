@@ -3,9 +3,7 @@
 
 #include "stm32f4xx_conf.h"
 
-
-extern uint8_t num_cont;
-void TIM1_Configure(uint32_t arr,uint16_t psc);
-extern 
+void TIM1_Configure(uint32_t us);
+extern void TIM1Callback();
 
 #endif

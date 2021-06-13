@@ -22,6 +22,7 @@ void LEDFlow_Init(void)
 
 void LEDFlow_Update()
 {
+	static uint32_t lastMillis = 0;
 	static uint8_t cont;
 	if (LEDFlow_flag == 0)
 	{
@@ -30,15 +31,11 @@ void LEDFlow_Update()
 	else if (LEDFlow_flag == 1)
 	{
 		LEDFlow_SET(1 << cont);
-		Delay_Ms(100);
-		cont++;
-		cont &= 0x07; //大于7后清零
-	}
-	else if (LEDFlow_flag == 2)
-	{
-		LEDFlow_SET(0xff00);
-		Delay_Ms(300);
-		LEDFlow_SET(0x0000);
-		Delay_Ms(300);
+		if (millis - lastMillis > 100)
+		{
+			lastMillis = millis;
+			cont++;
+			cont &= 0x07; //大于7后清零
+		}
 	}
 }

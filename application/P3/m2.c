@@ -21,69 +21,108 @@
 
 更新时间：2018-10-31
 ************************************************************************/
-#include "main.h"
+#include "stm32f4xx_conf.h"
 #include "delay.h"
 #include "smg.h"
-#include "led.h"
+#include "ledFlow.h"
 #include "exti.h"
 #include "my_timer.h"
 
-#define KEY  GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_11)
- 
+#define KEY GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_11)
+
 void Key_Hardware_Init()
 {
 	GPIO_InitTypeDef GPIO_TypeDefStructure;
 
-	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);	//开启中断输入端口时钟
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE); //开启中断输入端口时钟
 
 	GPIO_TypeDefStructure.GPIO_Pin = GPIO_Pin_11;
-	GPIO_TypeDefStructure.GPIO_Mode = GPIO_Mode_IN;    //通用输入模式
-	GPIO_TypeDefStructure.GPIO_PuPd = GPIO_PuPd_UP; 	 //上拉
+	GPIO_TypeDefStructure.GPIO_Mode = GPIO_Mode_IN; //通用输入模式
+	GPIO_TypeDefStructure.GPIO_PuPd = GPIO_PuPd_UP; //上拉
 	GPIO_Init(GPIOB, &GPIO_TypeDefStructure);
 }
 
+uint32_t millis = 0;
+
+void TIM1Callback()
+{
+	millis++;
+
+	static cont_time = 0;
+	if (LEDFlow_flag)
+	{
+		cont_time++;
+		if (cont_time >= 5000)
+		{
+			cont_time = 0;
+			LEDFlow_flag = 0;
+		}
+	}
+}
+
+uint8_t smgNum = 0;
+
+void updateSMG()
+{
+	static uint32_t lastMillis = 0;
+	if (millis - lastMillis > 500)
+	{
+		lastMillis = millis;
+		SMG_Sele(0, smgNum); //数码管显示数据
+
+		//数码管数据显示到第五位时按键检测
+		if (smgNum == 5 && !KEY)
+		{
+			Delay_Ms(20); //20ms 消抖
+			if (!KEY)
+			{
+				while (!KEY)
+					;
+				LEDFlow_flag = 1; //开启流水灯
+			}
+		}
+
+		smgNum++;
+		smgNum &= 0x07;
+	}
+}
+
+// //异步检测版
+// //数码管数据显示到第五位时按键检测
+// void checkKey()
+// {
+// 	static uint8_t last = 0;
+// 	static uint32_t lastMillis = 0;
+// 	if (millis - lastMillis > 20) //20ms 消抖
+// 	{
+// 		lastMillis = millis;
+// 		uint8_t new = !KEY &&smgNum == 5;
+// 		if (last && new)
+// 		{
+// 			while (!KEY)
+// 				;
+// 			LEDFlow_flag = 1; //开启流水灯
+// 		}
+// 		last = new;
+// 	}
+// }
 
 int main(void)
 {
-	uint8_t i;
-	uint16_t cont = 0;
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_0);
-	Delay_Init();             //延时初始化
-	EXTI_Configure();         //外部中断初始化 
-	TIM1_Configure(999, 167);  //定时器初始化  1ms
-	SMG_Init();               //数码管初始化
-	LED_Hardware_Init();       //LED灯初始化 
-	Key_Hardware_Init();       //按键检测初始化
-	 
-	while(1)
+	Delay_Init();		  //延时初始化
+	EXTI_Configure();	  //外部中断初始化
+	TIM1_Configure(1000); //定时器初始化  1ms
+	SMG_Init();			  //数码管初始化
+	LEDFlow_Init();		  //LED灯初始化
+	Key_Hardware_Init();  //按键检测初始化
+
+	while (1)
 	{
-		cont++;
-		if(cont >= 500)
-		{
-			cont = 0;
-			SMG_Sele(i);  //数码管显示数据
-			if(i == 5)    //数码管数据显示到第五位时按键检测
-			{
-				if(!KEY)
-				{
-					Delay_Ms(10);
-					if(!KEY)
-					{
-						while(!KEY){};
-						led_flow_flag = 1;   //开启流水灯
-					}
-			    }
-			}
-			i++;
-			i &= 0x07;
-	
-		}
-		Delay_Ms(1);   //需要明显效果时打开延时 
-		LED_Flow();   
+		updateSMG();
+		// checkKey();
+		LEDFlow_Update();
 	}
 }
 
 //end file
-
-
-
