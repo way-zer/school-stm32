@@ -21,7 +21,7 @@
             "executable": ".\\build\\Debug\\stm32f4xx_cubemx_demo.elf",
             "runToMain": true,
             "configFiles": [
-                "interface/stlink-v2.cfg",
+                "interface/jlink.cfg",
                 "target/stm32f4x.cfg"
             ],
             "svdFile": ".\\pack\\Keil\\STM32F4xx_DFP.1.0.8\\SVD\\STM32F40x.svd"
