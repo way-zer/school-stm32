@@ -20,7 +20,8 @@
             "led.h": "c",
             "delay.h": "c",
             "exti.h": "c",
-            "smg.h": "c"
+            "smg.h": "c",
+            "ledflow.h": "c"
         },
         "C_Cpp.default.intelliSenseMode": "gcc-arm",
         "files.autoGuessEncoding": true,

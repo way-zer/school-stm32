@@ -13,15 +13,16 @@
                 ".\\..\\..\\scoop\\apps\\gcc-arm-none-eabi\\9-2019-q4-major\\arm-none-eabi\\include",
                 ".\\pack\\Keil\\STM32F4xx_DFP.1.0.8\\Device\\Include",
                 ".\\.eide\\deps\\STM32F4xx_DFP\\Startup",
+                ".\\pack\\Keil\\STM32F4xx_DFP.1.0.8\\Device\\Include",
                 ".\\.eide\\deps\\STM32F4xx_DFP\\StdPeriphDrivers.GPIO",
                 ".\\.eide\\deps\\STM32F4xx_DFP\\StdPeriphDrivers.RCC",
                 ".\\pack\\Keil\\STM32F4xx_DFP.1.0.8\\Device\\StdPeriph_Driver\\inc",
                 ".\\.eide\\deps\\STM32F4xx_DFP\\StdPeriphDrivers.Framework",
+                ".\\pack\\Keil\\STM32F4xx_DFP.1.0.8\\Device\\StdPeriph_Driver\\inc",
                 ".\\.eide\\deps\\STM32F4xx_DFP\\StdPeriphDrivers.EXTI",
                 ".\\.eide\\deps\\STM32F4xx_DFP\\StdPeriphDrivers.SYSCFG",
                 ".\\.eide\\deps\\STM32F4xx_DFP\\StdPeriphDrivers.TIM",
-                ".\\application\\P3",
-                ".\\application\\P3\\libs",
+                ".\\application\\P2",
                 ".\\periph_config",
                 ".\\periph_config\\Drivers\\CMSIS\\Include",
                 ".\\periph_config\\Drivers\\CMSIS\\Device\\ST\\STM32F4xx\\Include",
@@ -450,7 +451,7 @@
                 "databaseFilename": "${default}"
             },
             "forcedInclude": [
-                ".\\..\\..\\.vscode\\extensions\\cl.eide-2.7.2\\bin\\include\\internal_headers\\gcc_intr.h"
+                ".\\..\\..\\.vscode\\extensions\\cl.eide-2.8.1\\bin\\include\\internal_headers\\gcc_intr.h"
             ]
         }
     ],
