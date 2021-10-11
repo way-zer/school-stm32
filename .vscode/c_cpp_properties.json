@@ -451,7 +451,7 @@
                 "databaseFilename": "${default}"
             },
             "forcedInclude": [
-                ".\\..\\..\\.vscode\\extensions\\cl.eide-2.8.1\\bin\\include\\internal_headers\\gcc_intr.h"
+                ".\\..\\..\\.vscode\\extensions\\cl.eide-2.10.0\\bin\\include\\internal_headers\\gcc_intr.h"
             ]
         }
     ],

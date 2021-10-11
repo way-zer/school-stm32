@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "marus25.cortex-debug",
+        "cl.eide",
+        "marus25.cortex-debug-dp-stm32f4",
+        "zixuanwang.linkerscript"
+    ]
+}
